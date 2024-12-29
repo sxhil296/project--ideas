@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { Toaster } from "@/components/ui/toaster"
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -38,6 +38,7 @@ export default function RootLayout({
         >
           <Header />
           <div className="max-w-5xl mx-auto px-6">{children}</div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
