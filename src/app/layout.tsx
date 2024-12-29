@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 
-import { Inter, Roboto_Mono } from 'next/font/google'
+import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/Header";
 
- 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
- 
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 const roboto_mono = Roboto_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto-mono',
-})
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto-mono",
+});
 
 export const metadata: Metadata = {
   title: "Project Ideas",
@@ -28,10 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${roboto_mono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.variable} ${roboto_mono.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="max-w-5xl mx-auto px-6">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );
